@@ -2,11 +2,10 @@ import Login from "./pages/Login";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Home from "./Features/DashBoard/Home";
 import Profile from "./pages/Profile";
 import AppLayout from "./Component/AppLayout";
 import ProtectedRoute from "./Component/ProtectedRoute";
-import Header from "./Component/Header";
+import Dashboard from "./pages/Dasboard";
 
 function App(props) {
   const queryClient = new QueryClient();
@@ -23,7 +22,7 @@ function App(props) {
               </ProtectedRoute>
             }
           >
-            <Route exact path="home" element={<Home />} />
+            <Route exact path="home" element={<Dashboard />} />
             <Route exact path="profile" element={<Profile />} />
           </Route>
           <Route exact path={"/login"} element={<Login />} />

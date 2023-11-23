@@ -2,11 +2,12 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Box from "@mui/material/Box";
-import TextInput from "../Component/customInput";
+import TextInput from "../Component/CustomInput";
 import Button from "@mui/material/Button";
 import styles from "./login.css";
 import { useLogin } from "../CustomHooks/useLogin";
 import Logo from "../Component/Logo";
+
 const required = (value) => {
   if (!value) {
     return (
@@ -17,8 +18,8 @@ const required = (value) => {
 
 const Login = () => {
   const form = useRef();
+  const [id, setID] = useState(0);
   const [email, setEamil] = useState("max@gmail.com");
-  const [value, setValue] = useState(0);
   const [password, setPassword] = useState("lily@123#");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -29,10 +30,6 @@ const Login = () => {
   const onChangeEmail = (e) => {
     const email = e.target.value;
     setEamil(email);
-  };
-
-  const valueChangeHandler = (event, field) => {
-    setValue({ [field]: event.target.value });
   };
 
   const onChangePassword = (e) => {
@@ -57,6 +54,13 @@ const Login = () => {
         <label htmlFor="username" className="signIn">
           Sign-In
         </label>
+        <TextInput
+          label={"Id"}
+          placeholder={"Id"}
+          type={"text"}
+          value={id}
+          disabled={true}
+        />
         <TextInput
           label={"Email"}
           placeholder={"Email"}
