@@ -21,35 +21,37 @@ import {
   UPDATE_USER_BY_ID,
 } from "../types";
 
-export function* getUsersSaga() {
+export function* getUsersSaga(action) {
   const users = yield getUsersAPI();
   yield put(getUserSlice(users.data));
 }
 
-export function* getUserByIdSaga(id) {
-  yield getUserByIdAPI(id);
-  yield put(setUserSlice());
+export function* getUserByIdSaga(action) {
+  yield getUserByIdAPI(action.id);
+  yield put(setUserSlice(action.id));
 }
 
-export function* createUserSaga(user) {
-  yield createUserAPI(user);
-  yield put(addUserSlice(user));
+export function* createUserSaga(action) {
+  yield createUserAPI(action.user);
+  yield put(addUserSlice(action.user));
 }
 
-export function* updateUserSaga(user) {
-  yield updateUserAPI(user);
-  yield put(editUserSlice(user));
+export function* updateUserSaga(action) {
+  yield updateUserAPI(action.user);
+  yield put(editUserSlice(action.user));
 }
 
-export function* deleteUserSaga(id) {
-  const user = yield deleteUserByAPI(id);
-  yield put(deleteUserSlice(user));
+export function* deleteUserSaga(action) {
+  const user = yield deleteUserByAPI(action.id);
+  yield put(deleteUserSlice(action.id));
 }
 
-export function* combineAllSaga() {
+export function* watchUserAsync() {
   yield takeEvery(GET_USERS, getUsersSaga);
   yield takeEvery(GET_USERS_BY_ID, getUserByIdSaga);
   yield takeEvery(CREATE_USER, createUserSaga);
   yield takeEvery(UPDATE_USER_BY_ID, updateUserSaga);
   yield takeEvery(DELETE_USER_BY_ID, deleteUserSaga);
 }
+
+export default watchUserAsync;

@@ -3,11 +3,17 @@ import Form from "react-validation/build/form";
 import TextInput from "../Component/CustomInput";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-// import { addUserSlice, editUserSlice } from "../Redux/slice/users";
+import { addUserSlice, editUserSlice } from "../Redux/slice/users";
 import { setUserSlice } from "../Redux/slice/user";
 import { nanoid } from "@reduxjs/toolkit";
 import { CREATE_USER, UPDATE_USER_BY_ID } from "../Redux/types";
+
+const StyledDiv = styled.header`
+  margin-left: -5rem;
+  padding: 1px;
+`;
 
 const MyForm = () => {
   const form = useRef();
@@ -43,7 +49,7 @@ const MyForm = () => {
   };
 
   return (
-    <div>
+    <StyledDiv>
       <Form ref={form}>
         <TextInput
           label={"Enter Name"}
@@ -76,7 +82,7 @@ const MyForm = () => {
           </Button>
         </Box>
       </Form>
-    </div>
+    </StyledDiv>
   );
 };
 

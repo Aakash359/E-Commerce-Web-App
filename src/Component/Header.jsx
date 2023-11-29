@@ -5,7 +5,7 @@ import LogOut from "../pages/LogOut";
 const StyledHeader = styled.header`
   background-color: #dfdfd0;
   padding: 1.2rem 4.8rem;
-  margin-left: -4rem;
+  margin-left: -12rem;
   border-bottom: 1px solid var(--color-black-100);
 `;
 const Header = (props) => {

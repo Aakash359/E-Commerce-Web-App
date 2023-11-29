@@ -37,4 +37,5 @@ export const {
   editUserSlice,
   deleteUserSlice,
 } = users.actions;
+
 export default users.reducer;

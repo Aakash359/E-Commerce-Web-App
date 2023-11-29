@@ -21,7 +21,7 @@ const StyledAppLayout = styled.div`
 const Main = styled.main`
   background-color: #efeeee;
   padding: 4rem 4.8rem 6.4rem;
-  margin-left: -3rem;
+  margin-left: -11rem;
 `;
 
 const AppLayout = () => {

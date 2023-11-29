@@ -55,13 +55,6 @@ const Login = () => {
           Sign-In
         </label>
         <TextInput
-          label={"Id"}
-          placeholder={"Id"}
-          type={"text"}
-          value={id}
-          disabled={true}
-        />
-        <TextInput
           label={"Email"}
           placeholder={"Email"}
           type={"text"}

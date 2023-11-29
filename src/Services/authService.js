@@ -1,14 +1,6 @@
-import axios from "axios";
 import supabase from "./supabase";
-const API_URL = "http://localhost:3000/api/auth/";
 
-// const register = (username, email, password) => {
-//   return axios.post(API_URL + "signup", {
-//     username,
-//     email,
-//     password,
-//   });
-// };
+const API_URL = "http://localhost:3000/api/auth/";
 
 export const loginApi = async ({ email, password }) => {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -24,13 +16,6 @@ export const logOutApi = async () => {
   if (error) throw new Error(error.message);
 };
 
-// const logout = () => {
-//   localStorage.removeItem("user");
-//   return axios.post(API_URL + "signout").then((response) => {
-//     return response.data;
-//   });
-// };
-
 export const getCurrentUser = async () => {
   const { data: session } = await supabase.auth.getSession();
   if (!session.session) return null;
@@ -39,10 +24,3 @@ export const getCurrentUser = async () => {
   if (error) throw new Error(error.message);
   return data?.user;
 };
-
-// const AuthService = {
-//   register,
-//   login,
-//   logout,
-//   getCurrentUser,
-// };
