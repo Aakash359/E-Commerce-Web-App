@@ -14,5 +14,3 @@ export const deleteUserByAPI = async (id) => axios.delete(`/users/${id}`);
 
 export const fetchProductList = async () =>
   axios.get(`https://dummyjson.com/products`);
-
-// axios.delete("/users/'+${user.id});

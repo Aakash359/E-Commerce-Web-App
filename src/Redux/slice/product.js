@@ -4,6 +4,7 @@ const ProductListReducer = createSlice({
   name: "productList",
   initialState: {
     productArray: [],
+    error: null,
   },
   reducers: {
     getProductSlice: (state, action) => {
@@ -12,6 +13,7 @@ const ProductListReducer = createSlice({
     },
   },
 });
+
 export const { getProductSlice } = ProductListReducer.actions;
 
 export default ProductListReducer.reducer;

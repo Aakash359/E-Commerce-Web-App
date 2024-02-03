@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { HiOutlineHome } from "react-icons/hi2";
 import { FcManager } from "react-icons/fc";
+
 const NavList = styled.ul`
   display: flex;
   list-style: none;

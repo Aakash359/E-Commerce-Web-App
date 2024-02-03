@@ -15,5 +15,6 @@ const user = createSlice({
     },
   },
 });
+
 export const { setUserSlice } = user.actions;
 export default user.reducer;

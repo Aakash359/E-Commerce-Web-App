@@ -11,6 +11,9 @@
 .reducedMargin {
   margin-top: 10px;
 }
+.tableView {
+  margin-top: 29px;
+}
 
 .label {
   font-size: larger;

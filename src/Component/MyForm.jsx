@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Form from "react-validation/build/form";
 import TextInput from "../Component/CustomInput";
 import Button from "@mui/material/Button";
@@ -9,6 +9,7 @@ import { addUserSlice, editUserSlice } from "../Redux/slice/users";
 import { setUserSlice } from "../Redux/slice/user";
 import { nanoid } from "@reduxjs/toolkit";
 import { CREATE_USER, UPDATE_USER_BY_ID } from "../Redux/types";
+import { Alert } from "@mui/material";
 
 const StyledDiv = styled.header`
   margin-left: -5rem;
@@ -18,11 +19,19 @@ const StyledDiv = styled.header`
 const MyForm = () => {
   const form = useRef();
   const user = useSelector((state) => state.user);
+  const [disable, setDisable] = useState("");
 
   const dispatch = useDispatch();
 
   const onhandleChange = (props) => (event) => {
+    setDisable(event.target.value);
     dispatch(setUserSlice({ ...user, [props]: event.target.value }));
+  };
+
+  const disabledInput = (event) => {
+    // if (!event.target.value) {
+    //   Alert.alert("hi");
+    // }
   };
 
   const handleSubmit = () => {
@@ -67,7 +76,7 @@ const MyForm = () => {
         />
         <TextInput
           label={"Password"}
-          type={"password"}
+          type={"text"}
           placeholder={"Enter password"}
           value={user.password}
           onValueChange={onhandleChange("password")}
@@ -76,6 +85,7 @@ const MyForm = () => {
           <Button
             variant="contained"
             sx={{ backgroundColor: "orange" }}
+            disabled={disable === ""}
             onClick={() => handleSubmit()}
           >
             Submit

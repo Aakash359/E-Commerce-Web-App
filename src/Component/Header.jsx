@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   margin-left: -12rem;
   border-bottom: 1px solid var(--color-black-100);
 `;
+
 const Header = (props) => {
   const { headerTitle } = props;
   return (

@@ -23,7 +23,6 @@ const Login = () => {
   const [password, setPassword] = useState("lily@123#");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [message, setMessage] = useState("");
   const { login, isLoading } = useLogin();
   const navigate = useNavigate();
 
@@ -39,7 +38,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!email || !password) return alert("please enter the login value");
+    if (!email || !password) return alert("please enter the login details");
     login({ email, password });
   };
 
@@ -85,14 +84,6 @@ const Login = () => {
             Login
           </Button>
         </Box>
-
-        {message && (
-          <div className="form-group">
-            <div className="alert alert-danger" role="alert">
-              {message}
-            </div>
-          </div>
-        )}
       </Form>
     </div>
   );

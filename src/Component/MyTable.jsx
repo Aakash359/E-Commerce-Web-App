@@ -9,27 +9,28 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserSlice } from "../Redux/slice/user";
-import {
-  DELETE_USER_BY_ID,
-  GET_USERS,
-  UPDATE_USER_BY_ID,
-} from "../Redux/types";
+import { DELETE_USER_BY_ID, GET_USERS } from "../Redux/types";
 
 const MyTable = () => {
   const rows = useSelector((state) => state.users);
   const dispatch = useDispatch();
-  useEffect(() => dispatch({ type: GET_USERS }), [dispatch]);
+
+  const getUserList = () => {
+    dispatch({ type: GET_USERS });
+  };
+
+  useEffect(() => getUserList(), [dispatch]);
 
   return (
     <TableContainer component={Paper} className="tableView">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Password</TableCell>
-            <TableCell align="right">Edit</TableCell>
-            <TableCell align="right">Delete</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Email</TableCell>
+            <TableCell align="center">Password</TableCell>
+            <TableCell align="center">Edit</TableCell>
+            <TableCell align="center">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,12 +39,12 @@ const MyTable = () => {
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell align="center" component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">{row.password}</TableCell>
-              <TableCell align="right">
+              <TableCell align="center">{row.email}</TableCell>
+              <TableCell align="center">{row.password}</TableCell>
+              <TableCell align="center">
                 <Button
                   variant="contained"
                   sx={{ backgroundColor: "orange" }}
@@ -52,8 +53,7 @@ const MyTable = () => {
                   Edit
                 </Button>
               </TableCell>
-              <TableCell align="right">
-                {" "}
+              <TableCell align="center">
                 <Button
                   variant="contained"
                   sx={{ backgroundColor: "orange" }}
